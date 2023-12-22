@@ -7,7 +7,7 @@ var lastTimestamp = 0;
 let canvas = document.getElementById("gamecanvas");
 let context = canvas.getContext("2d");
 
-
+var barlength = 0;
 
 function gameLoop(timestamp) {
     
@@ -21,9 +21,15 @@ function gameLoop(timestamp) {
 
     /// ---- Add More Code Here
 
+    context.strokeStyle = "blue";
+    context.beginPath();
+    context.moveTo(0,100);
+    context.lineTo(1+barlength,100);
+    context.stroke();
+    barlength++;
     /// ---- End
 
-    if (lastTimestamp > 0) // Game Stop Criteria
+    if (barlength > canvas.width) // Game Stop Criteria
         return;
 
     requestAnimationFrame(gameLoop); // Ask for next frame
